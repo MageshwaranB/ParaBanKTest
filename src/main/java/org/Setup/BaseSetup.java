@@ -5,15 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 public class BaseSetup {
     static WebDriver driver;
-    String url="https://parabank.parasoft.com/parabank/index.htm";
+    String url="https://www.saucedemo.com/";
 
 
     @BeforeMethod
-    public void setup(){
+    public void setup() throws MalformedURLException {
         driver= InitiateDriver.getDriver() ;
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

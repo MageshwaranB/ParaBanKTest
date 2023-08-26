@@ -2,9 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true"
-          name="regression" parallel="methods" thread-count="6">
-        <packages>
-            <package name="tests.*"></package>
-        </packages>
+          name="regression" parallel="classes" thread-count="6">
+        <classes>
+            <class name="tests.LoginPage.LoginPageTest"/>
+        </classes>
     </test>
 </suite>

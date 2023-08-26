@@ -4,5 +4,6 @@ public enum Browsers {
     CHROME,
     FIREFOX,
     EDGE,
-    IE
+    IE,
+    REMOTE
 }

@@ -1,7 +1,9 @@
 package org.Setup;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
@@ -32,6 +34,12 @@ public class BrowserCapabilities {
         desiredCapabilities.setAcceptInsecureCerts(true);
         options.merge(desiredCapabilities);
         return options;
+    }
+
+    static DesiredCapabilities getRemoteCapabilities(){
+        DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
+        desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME,"chrome");
+        return desiredCapabilities;
     }
 
 }
