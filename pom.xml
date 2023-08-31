@@ -50,6 +50,12 @@
             <artifactId>selenium-remote-driver</artifactId>
             <version>[4.0.0,)</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>[4.0.0,)</version>
+        </dependency>
 
 
 

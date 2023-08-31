@@ -13,21 +13,30 @@ import java.time.LocalTime;
 
 public class PageLevelMethods extends InitiateDriver {
     static JavascriptExecutor js = (JavascriptExecutor) driver;
+    static String filePath;
 
     public static Boolean scrollingToTheElement(By element) {
         js.executeScript("arguments[0]. scrollIntoView(true);", element);
         return WebElementMethods.elementIsVisible(element);
     }
-    public static void takeScreenshot(){
+    public static String takeScreenshot(String testName){
+        TakesScreenshot takesScreenshot= (TakesScreenshot) driver;
+        var source=takesScreenshot.getScreenshotAs(OutputType.FILE);
+        filePath=System.getProperty("user.dir")+"/Screenshots/"+testName+"_"+ System.currentTimeMillis()+".png";
+        File destFile=new File(filePath);
         try{
-            TakesScreenshot takesScreenshot= (TakesScreenshot) driver;
-            var source=takesScreenshot.getScreenshotAs(OutputType.FILE);
-            File destFile=new File("./Screenshots/FailedTest_"+ LocalTime.now()+".png");
-            FileUtils.copyFile(source,destFile);
+            FileUtils.copyFile(source, destFile);
         }
         catch (Exception e){
             e.printStackTrace();
         }
+        return filePath;
+    }
+    public static String getPageTitle(){
+        return driver.getTitle();
+    }
+    public static String getPageUrl(){
+        return driver.getCurrentUrl();
     }
 
 }

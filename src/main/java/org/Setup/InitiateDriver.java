@@ -13,7 +13,7 @@ import java.net.URL;
 public class InitiateDriver
 {
    public static WebDriver driver;
-    static String browser=Browsers.REMOTE.name();
+    static String browser=Browsers.CHROME.name();
     public static WebDriver getDriver() throws MalformedURLException {
         switch (browser){
             case "EDGE":
