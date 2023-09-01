@@ -2,12 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <listeners>
-        <listener class-name="org.TestngUtilities.TestListener"></listener>
+        <listener class-name="org.TestngUtilities.TestListener"/>
     </listeners>
     <test verbose="2" preserve-order="true"
           name="regression" parallel="methods" thread-count="6">
         <packages>
-            <package name="tests.*"></package>
+            <package name="tests.*"/>
         </packages>
     </test>
 </suite>

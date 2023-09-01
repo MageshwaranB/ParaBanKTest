@@ -11,13 +11,13 @@ import java.time.Duration;
 import static org.Setup.InitiateDriver.getDriver;
 
 public class BaseSetup {
-    static WebDriver driver;
+    static String browser=Browsers.CHROME.name();
     String url="https://www.saucedemo.com/";
 
 
     @BeforeMethod
     public void setup() throws MalformedURLException {
-        InitiateDriver.setDriver() ;
+        InitiateDriver.setDriver(browser);
         getDriver().get(url);
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         getDriver().manage().window().maximize();

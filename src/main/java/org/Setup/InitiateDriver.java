@@ -13,8 +13,8 @@ import java.net.URL;
 public class InitiateDriver
 {
    public static ThreadLocal<WebDriver> driver=new ThreadLocal<>();
-    static String browser=Browsers.CHROME.name();
-    public static void setDriver() throws MalformedURLException {
+
+    public static void setDriver(String browser) throws MalformedURLException {
         switch (browser){
             case "EDGE":
                 var edgeOptions=new EdgeOptions();
