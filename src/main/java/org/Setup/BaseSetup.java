@@ -8,6 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import java.net.MalformedURLException;
 import java.time.Duration;
 
+import static org.Setup.InitiateDriver.getDriver;
+
 public class BaseSetup {
     static WebDriver driver;
     String url="https://www.saucedemo.com/";
@@ -15,15 +17,15 @@ public class BaseSetup {
 
     @BeforeMethod
     public void setup() throws MalformedURLException {
-        driver= InitiateDriver.getDriver() ;
-        driver.get(url);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
+        InitiateDriver.setDriver() ;
+        getDriver().get(url);
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        getDriver().manage().window().maximize();
     }
     @AfterMethod
     public void teardown(){
-        driver.manage().deleteAllCookies();
-        driver.quit();
+        getDriver().manage().deleteAllCookies();
+        getDriver().quit();
     }
 
 }

@@ -12,22 +12,24 @@ import java.net.URL;
 
 public class InitiateDriver
 {
-   public static WebDriver driver;
+   public static ThreadLocal<WebDriver> driver=new ThreadLocal<>();
     static String browser=Browsers.CHROME.name();
-    public static WebDriver getDriver() throws MalformedURLException {
+    public static void setDriver() throws MalformedURLException {
         switch (browser){
             case "EDGE":
                 var edgeOptions=new EdgeOptions();
-                driver=new EdgeDriver(BrowserCapabilities.getEdgeCapabilities(edgeOptions));
+                driver.set(new EdgeDriver(BrowserCapabilities.getEdgeCapabilities(edgeOptions)));
                 break;
             case "REMOTE":
-                    driver=new RemoteWebDriver(new URL("http://localhost:4444"),BrowserCapabilities.getRemoteCapabilities());
+                    driver.set(new RemoteWebDriver(new URL("http://localhost:4444"),BrowserCapabilities.getRemoteCapabilities()));
                 break;
             default:
                 var chromeOptions=new ChromeOptions();
-                driver=new ChromeDriver(BrowserCapabilities.getChromeCapabilities(chromeOptions));
+                driver.set(new ChromeDriver(BrowserCapabilities.getChromeCapabilities(chromeOptions)));
         }
-        return driver;
+    }
+    public static WebDriver getDriver(){
+        return driver.get();
     }
 
 }

@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.time.LocalTime;
 
 public class PageLevelMethods extends InitiateDriver {
-    static JavascriptExecutor js = (JavascriptExecutor) driver;
+    static JavascriptExecutor js = (JavascriptExecutor) getDriver();
     static String filePath;
 
     public static Boolean scrollingToTheElement(By element) {
@@ -20,7 +20,7 @@ public class PageLevelMethods extends InitiateDriver {
         return WebElementMethods.elementIsVisible(element);
     }
     public static String takeScreenshot(String testName){
-        TakesScreenshot takesScreenshot= (TakesScreenshot) driver;
+        TakesScreenshot takesScreenshot= (TakesScreenshot) getDriver();
         var source=takesScreenshot.getScreenshotAs(OutputType.FILE);
         filePath=System.getProperty("user.dir")+"/Screenshots/"+testName+"_"+ System.currentTimeMillis()+".png";
         File destFile=new File(filePath);
@@ -33,10 +33,10 @@ public class PageLevelMethods extends InitiateDriver {
         return filePath;
     }
     public static String getPageTitle(){
-        return driver.getTitle();
+        return getDriver().getTitle();
     }
     public static String getPageUrl(){
-        return driver.getCurrentUrl();
+        return getDriver().getCurrentUrl();
     }
 
 }

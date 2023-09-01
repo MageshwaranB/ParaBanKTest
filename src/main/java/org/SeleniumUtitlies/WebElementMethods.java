@@ -11,10 +11,10 @@ import java.util.List;
 public class WebElementMethods extends InitiateDriver{
 
     private static WebElement findElement(By element){
-        return driver.findElement(element);
+        return getDriver().findElement(element);
     }
     private static List<WebElement> findElements(By element){
-        return driver.findElements(element);
+        return getDriver().findElements(element);
     }
     public static void clickTheElement(By element){
         findElement(element).click();
