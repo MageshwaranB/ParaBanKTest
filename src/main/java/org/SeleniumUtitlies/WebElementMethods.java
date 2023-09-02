@@ -3,6 +3,7 @@ package org.SeleniumUtitlies;
 import org.Setup.InitiateDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
@@ -83,5 +84,18 @@ public class WebElementMethods extends InitiateDriver{
     private static String removeDollarSign(String value){
         return value.split("\\$")[1];
     }
+    public static void hoverOnTheElement(By element){
+        Actions actions=new Actions(getDriver());
+        actions.moveToElement(findElement(element)).build().perform();
+    }
+    public static void dragAndDropObjects(By sourceElement,By targetElement){
+        Actions actions=new Actions(getDriver());
+        actions.dragAndDrop(findElement(sourceElement), findElement(targetElement)).build().perform();
+    }
+    public static void rightClickOnElement(By element){
+        Actions actions=new Actions(getDriver());
+        actions.contextClick(findElement(element)).build().perform();
+    }
+    
 
 }

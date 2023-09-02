@@ -11,7 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BrowserCapabilities {
-    static ChromeOptions getChromeCapabilities(ChromeOptions options){
+    static ChromeOptions getChromeCapabilities(boolean headless){
+        ChromeOptions options=new ChromeOptions();
         options.addArguments("--incognito");
         options.addArguments("--version");
         options.addExtensions(new File("Extensions/adblocker.crx"));
@@ -21,9 +22,11 @@ public class BrowserCapabilities {
         var desiredCapabilities=new DesiredCapabilities();
         desiredCapabilities.setAcceptInsecureCerts(true);
         options.merge(desiredCapabilities);
+        var headlessVar=headless?options.addArguments("--headless=new"):false;
         return options;
     }
-    static EdgeOptions getEdgeCapabilities(EdgeOptions options){
+    static EdgeOptions getEdgeCapabilities(boolean headless){
+        EdgeOptions options=new EdgeOptions();
         options.addArguments("--incognito");
         options.addArguments("--version");
         options.addExtensions(new File("Extensions/adblocker.crx"));
@@ -33,12 +36,15 @@ public class BrowserCapabilities {
         var desiredCapabilities=new DesiredCapabilities();
         desiredCapabilities.setAcceptInsecureCerts(true);
         options.merge(desiredCapabilities);
+        var headlessVar=headless?options.addArguments("--headless=new"):false;
         return options;
     }
 
-    static DesiredCapabilities getRemoteCapabilities(){
+    static DesiredCapabilities getRemoteCapabilities(String browser){
         DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
-        desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME,"chrome");
+        desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME,browser.toLowerCase());
+        var setEntity=browser.equals("CHROME")?getChromeCapabilities(true):getEdgeCapabilities(true);
+        desiredCapabilities.merge(setEntity);
         return desiredCapabilities;
     }
 
