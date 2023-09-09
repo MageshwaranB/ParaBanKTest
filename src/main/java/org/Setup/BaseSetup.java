@@ -11,8 +11,8 @@ import java.time.Duration;
 import static org.Setup.InitiateDriver.getDriver;
 
 public class BaseSetup {
-    static String environment=Environment.REMOTE.name();
-    static String browser=Browsers.EDGE.name();
+    static String environment=Environment.LOCAL.name();
+    static String browser=Browsers.CHROME.name();
     String url="https://www.saucedemo.com/";
 
 

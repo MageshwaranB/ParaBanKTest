@@ -17,7 +17,7 @@ public class Add_TShirt_15DollarOrMore_Test extends BaseSetup {
         loginUserComponents.getUserNameTxtBox().enterTheValue("standard_user");
         loginUserComponents.getPasswordTxtBox().enterTheValue("secret_sauce");
         loginUserComponents.getLoginButton().clickThElement();
-        Assert.assertTrue(SeleniumMethods.getPageUrl().contains("inventory1"));
+        Assert.assertTrue(SeleniumMethods.getPageUrl().contains("inventory"));
         SeleniumMethods.filterByPriceWithAction(inventoryComponents.getPrices(), FilterOperations.ADDTOCART.getValue(),15);
         Assert.assertEquals(
                 (long) SeleniumMethods.filterByPriceWithAction(inventoryComponents.getPrices(),
