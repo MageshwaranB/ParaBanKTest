@@ -1,18 +1,22 @@
 package org.Elements;
 
+import org.SeleniumUtitlies.SeleniumMethods;
 import org.openqa.selenium.By;
 
 public class LoginUserComponents {
-
-    public By getUserNameTxtBox() {
-        return By.id("user-name");
+    SeleniumMethods seleniumMethods;
+    LoginUserComponents loginUserComponents;
+    public LoginUserComponents(){
+    }
+    public SeleniumMethods getUserNameTxtBox() {
+        return new SeleniumMethods(By.id("user-name"));
     }
 
-    public By getPasswordTxtBox() {
-        return By.id("password");
+    public SeleniumMethods getPasswordTxtBox() {
+        return new SeleniumMethods(By.id("password"));
     }
 
-    public By getLoginButton() {
-        return By.id("login-button");
+    public SeleniumMethods getLoginButton() {
+         return new SeleniumMethods(By.id("login-button"));
     }
 }
