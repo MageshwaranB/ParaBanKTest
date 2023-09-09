@@ -4,7 +4,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import org.SeleniumUtitlies.PageLevelMethods;
+import org.SeleniumUtitlies.SeleniumMethods;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
@@ -34,7 +34,7 @@ public class TestListener extends TestListenerAdapter {
         extentTest=extentReports.createTest(tr.getName());
         extentTest.log(Status.FAIL,tr.getTestName()+" is failed");
         extentTest.log(Status.FAIL,tr.getThrowable());
-        extentTest.addScreenCaptureFromBase64String(PageLevelMethods.takeScreenshot(tr.getName()),"Taking screenshot of failed testcase: "+tr.getName());
+        extentTest.addScreenCaptureFromPath(SeleniumMethods.takeScreenshot(tr.getName()),"Taking screenshot of failed testcase: "+tr.getName());
         extentTest.log(Status.FAIL, String.valueOf(tr.getStartMillis()));
         extentTest.log(Status.FAIL,String.valueOf(tr.getEndMillis()));
     }
